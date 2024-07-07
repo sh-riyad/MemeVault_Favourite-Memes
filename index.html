@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MemeVault</title>
+  </head>
+  <body>
+    <section class="h-screen flex flex-col relative">
+      <nav class="w-full h-16 flex flex-row px-5 shadow-md">
+        <!-- Logo Div -->
+        <div class="w-4/12 h-full flex flex-row items-center gap-3">
+          <svg
+            class="w-8 h-8"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 512 512"
+            xml:space="preserve"
+            fill="#000000"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <ellipse
+                style="fill: #f4b2b0"
+                cx="256"
+                cy="256"
+                rx="95.669"
+                ry="240.941"
+              ></ellipse>
+              <path
+                style="fill: #b3404a"
+                d="M496.941,240.941H366.545c-1.444-60.583-11.571-117.234-28.899-160.87 c-6.471-16.298-13.791-30.277-21.786-41.788c63.268,17.494,117.231,62.103,145.437,123.366c3.48,7.555,12.424,10.859,19.977,7.38 c7.555-3.479,10.86-12.422,7.382-19.977c-20.192-43.859-52.281-81.035-92.8-107.508C354.259,14.366,305.897,0,256,0 C114.842,0,0,114.842,0,256c0,8.317,6.742,15.059,15.059,15.059h130.396c1.444,60.583,11.571,117.234,28.899,160.87 c6.481,16.324,13.813,30.321,21.825,41.842c-64.235-17.681-118.686-63.256-146.614-125.934c-3.385-7.599-12.293-11.013-19.884-7.626 c-7.597,3.385-11.013,12.288-7.626,19.884C63.17,452.373,155,512,256,512c141.158,0,256-114.842,256-256 C512,247.683,505.257,240.941,496.941,240.941z M196.227,38.161c-8.029,11.535-15.38,25.555-21.874,41.912 c-17.327,43.634-27.455,100.286-28.898,160.869H30.631C37.063,143.736,105.251,63.152,196.227,38.161z M202.344,420.814 c-15.98-40.245-25.355-92.957-26.766-149.755h94.979c8.315,0,15.059-6.742,15.059-15.059c0-8.317-6.743-15.059-15.059-15.059 h-94.979c1.411-56.797,10.785-109.509,26.766-149.755C217.529,52.947,237.586,30.118,256,30.118s38.472,22.829,53.656,61.068 c17.385,43.782,26.958,102.313,26.958,164.814s-9.573,121.032-26.958,164.814c-15.184,38.239-35.242,61.068-53.656,61.068 S217.529,459.053,202.344,420.814z M315.773,473.839c8.029-11.535,15.378-25.555,21.873-41.912 c17.327-43.636,27.455-100.286,28.899-160.87h114.822C474.937,368.264,406.749,448.848,315.773,473.839z"
+              ></path>
+            </g>
+          </svg>
+          <strong class="hidden md:block">MemeVault</strong>
+          <strong class="hidden lg:block">| Fevourite Memes</strong>
+        </div>
+
+        <!-- Search dev -->
+        <div class="w-10/12 md:w-9/12 h-full flex flex-row gap-4 items-center">
+          <div class="relative w-10/12 h-8 flex items-center">
+            <div class="absolute px-6">
+              <svg
+                class="w-4 h-4"
+                fill="#000000"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 488.4 488.4"
+                xml:space="preserve"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <g>
+                      <path
+                        d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+            <input
+              class="w-full h-full pl-8 ml-4 rounded-md ring-1"
+              id="search"
+              placeholder="Search Memes"
+            />
+          </div>
+        </div>
+
+        <!-- Theme and dropdown -->
+        <div
+          class="w-[20%] float-end h-full flex flex-row ml-2 px-4 justify-between items-center gap-2"
+        >
+          <!-- theme -->
+          <button
+            class="flex flex-row px-3 py-2 rounded-xl bg-slate-300 hover:bg-blue-500"
+            id="themeOptionsButton"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="h-6 w-6 stroke-current"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+              ></path>
+            </svg>
+
+            <div class="hidden md:flex md:flex-row ml-3">
+              <strong>Themes</strong>
+              <svg
+                class="w-6 h-6 ml-2"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </button>
+
+          <!-- DropDown -->
+          <button id="dropdown" class="md:hidden" type="menu">
+            <svg
+              width="20"
+              height="20"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="inline-block h-6 w-6 stroke-current md:h-6 md:w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        class="bg-red-200 w-56 h-2/4 absolute hidden right-2 md:right-10 top-16 rounded-lg p-4 overflow-auto"
+        id="themeOptionsDiv"
+      >
+        <!-- Theme List goes Here -->
+      </div>
+
+      <section class="w-full m-5 h-full flex-grow">
+        <!-- dropdown slide -->
+        <div
+          id="dropdownBar"
+          class="h-[85%] md:h-full w-1/2 hidden md:block md:float-start md:w-1/4 md:mr-0 rounded-md shadow-md"
+        >
+          <ul class="px-3 py-4 text-xl flex flex-col gap-1">
+            <li class="px-4 py-1 hover:bg-red-500 hover:rounded-md">
+              Drank mene
+            </li>
+            <li class="px-4 py-1 hover:bg-red-500 hover:rounded-md">
+              Cat memes
+            </li>
+            <li class="px-4 py-1 hover:bg-red-500 hover:rounded-md">
+              Funny memes
+            </li>
+          </ul>
+        </div>
+
+        <div
+          id="mainContent"
+          class="h-full w-full md:w-[74%] float-end flex items-center justify-center rounded-md shadow-md"
+        >
+          <div class="flex flex-col w-2/4 items-center justify-center gap-5">
+            <strong>You need an API keyto get the memes feed.</strong>
+            <button class="bg-red-100 py-3 px-5 rounded-full">
+              Set API Key
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
