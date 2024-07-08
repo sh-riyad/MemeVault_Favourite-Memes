@@ -7,8 +7,16 @@
     <title>MemeVault</title>
   </head>
   <body>
-    <section class="h-screen flex flex-col relative">
-      <nav class="w-full h-16 flex flex-row px-5 shadow-md">
+    <section class="h-screen flex flex-col relative bg-[#1d232a] text-white">
+      <!-- Alert message -->
+      <div
+        class="w-1/2 h-10 absolute justify-center bg-red-500 z-20 left-1/2 top-12 transform -translate-x-1/2 rounded-xl ring-1 hidden"
+      >
+        <div><p>Please insert a valid API</p></div>
+      </div>
+      <!-- Alert message end -->
+
+      <nav class="w-full h-16 flex flex-row px-5 shadow-md bg-[#15191e]">
         <!-- Logo Div -->
         <div class="w-4/12 h-full flex flex-row items-center gap-3">
           <svg
@@ -46,12 +54,15 @@
         </div>
 
         <!-- Search dev -->
-        <div class="w-10/12 md:w-9/12 h-full flex flex-row gap-4 items-center">
+        <div
+          id="searchDiv"
+          class="w-10/12 md:w-9/12 h-full flex gap-4 items-center justify-center"
+        >
           <div class="relative w-10/12 h-8 flex items-center">
             <div class="absolute px-6">
               <svg
                 class="w-4 h-4"
-                fill="#000000"
+                fill="#fffff"
                 version="1.1"
                 id="Capa_1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -78,10 +89,16 @@
             </div>
 
             <input
-              class="w-full h-full pl-8 ml-4 rounded-md ring-1"
+              class="w-full h-full pl-8 py-1 ml-4 rounded-md mb-1 ring-1 bg-[#15191e]"
               id="search"
               placeholder="Search Memes"
             />
+            <p
+              id="inputError"
+              class="text-xs absolute -bottom-3 left-12 hidden"
+            >
+              Please enter at least 3 characters to begin your search
+            </p>
           </div>
         </div>
 
@@ -91,7 +108,7 @@
         >
           <!-- theme -->
           <button
-            class="flex flex-row px-3 py-2 rounded-xl bg-slate-300 hover:bg-blue-500"
+            class="flex flex-row px-3 py-2 rounded-xl ring-1 bg-[#15191e] hover:bg-blue-500"
             id="themeOptionsButton"
           >
             <svg
@@ -109,7 +126,7 @@
             </svg>
 
             <div class="hidden md:flex md:flex-row ml-3">
-              <strong>Themes</strong>
+              <strong id="themeButtonText">Themes</strong>
               <svg
                 class="w-6 h-6 ml-2"
                 viewBox="0 0 24 24"
@@ -157,26 +174,32 @@
       </nav>
 
       <div
-        class="bg-red-200 w-56 h-2/4 absolute hidden right-2 md:right-10 top-16 rounded-lg p-4 overflow-auto"
+        class="w-56 h-[49%] absolute z-10 hidden right-2 md:right-10 top-16 rounded-lg p-4 overflow-auto shadow-sm ring-1 bg-[#15191e]"
         id="themeOptionsDiv"
       >
         <!-- Theme List goes Here -->
       </div>
 
-      <section class="w-full m-5 h-full flex-grow">
+      <section class="w-full m-5 h-full flex flex-grow gap-4">
         <!-- dropdown slide -->
         <div
           id="dropdownBar"
-          class="h-[85%] md:h-full w-1/2 hidden md:block md:float-start md:w-1/4 md:mr-0 rounded-md shadow-md"
+          class="h-[85%] md:h-full w-1/2 hidden z-10 md:block md:float-start md:w-1/4 md:mr-0 ring-1 md:ring-0 rounded-md shadow-md bg-[#15191e]"
         >
           <ul class="px-3 py-4 text-xl flex flex-col gap-1">
-            <li class="px-4 py-1 hover:bg-red-500 hover:rounded-md">
+            <li
+              class="px-4 py-1 hover:bg-[#1d232a] hover:rounded-md hover:ring-1"
+            >
               Drank mene
             </li>
-            <li class="px-4 py-1 hover:bg-red-500 hover:rounded-md">
+            <li
+              class="px-4 py-1 hover:bg-[#1d232a] hover:rounded-md hover:ring-1"
+            >
               Cat memes
             </li>
-            <li class="px-4 py-1 hover:bg-red-500 hover:rounded-md">
+            <li
+              class="px-4 py-1 hover:bg-[#1d232a] hover:rounded-md hover:ring-1"
+            >
               Funny memes
             </li>
           </ul>
@@ -184,13 +207,104 @@
 
         <div
           id="mainContent"
-          class="h-full w-full md:w-[74%] float-end flex items-center justify-center rounded-md shadow-md"
+          class="h-full w-full md:flex-grow float-end flex items-center justify-center relative rounded-md shadow-md bg-[#15191e]"
         >
           <div class="flex flex-col w-2/4 items-center justify-center gap-5">
             <strong>You need an API keyto get the memes feed.</strong>
-            <button class="bg-red-100 py-3 px-5 rounded-full">
+            <button
+              id="setApiKeyButton"
+              class="py-3 px-5 rounded-full ring-1 bg-[#15191e]"
+            >
               Set API Key
             </button>
+          </div>
+
+          <!-- Modal Div -->
+          <div
+            id="modal"
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden"
+          >
+            <div
+              class="sm:w-[35rem] sm:h-[18rem] flex flex-col bg-[#1d232a] rounded-2xl ring-1 shadow-lg p-5"
+            >
+              <div class="flex flex-row justify-between">
+                <strong class="text-2xl mb-6">Provide API Key</strong>
+                <button
+                  id="modalCross"
+                  class="w-7 h-7 flex justify-center items-center rounded-full hover:bg-[#15191e] hover:ring-1"
+                >
+                  <svg
+                    class="w-3 h-3"
+                    fill="#ffffff"
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 490 490"
+                    xml:space="preserve"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <polygon
+                        points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 "
+                      ></polygon>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+
+              <p class="w-[90%] text-sm mb-4 text-slate-400">
+                Press set your own API key below (that needs to be set only once
+                in your browser). Find your own key here:
+                <a>https://humoraapi.com/profile/</a>
+              </p>
+              <div
+                class="w-full h-1/2 flex justify-center flex-col items-center relative gap-4"
+              >
+                <svg
+                  class="w-5 h-5 absolute left-5 top-3 sm:left-9 sm:top-6"
+                  viewBox="0 0 24 24"
+                  fill="#ffffff"
+                  xmlns="http://www.w3.org/2000/svg"
+                  transform="rotate(180)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M21.0667 5C21.6586 5.95805 22 7.08604 22 8.29344C22 11.7692 19.1708 14.5869 15.6807 14.5869C15.0439 14.5869 13.5939 14.4405 12.8885 13.8551L12.0067 14.7333C11.272 15.465 11.8598 15.465 12.1537 16.0505C12.1537 16.0505 12.8885 17.075 12.1537 18.0995C11.7128 18.6849 10.4783 19.5045 9.06754 18.0995L8.77362 18.3922C8.77362 18.3922 9.65538 19.4167 8.92058 20.4412C8.4797 21.0267 7.30403 21.6121 6.27531 20.5876C6.22633 20.6364 5.952 20.9096 5.2466 21.6121C4.54119 22.3146 3.67905 21.9048 3.33616 21.6121L2.45441 20.7339C1.63143 19.9143 2.1115 19.0264 2.45441 18.6849L10.0963 11.0743C10.0963 11.0743 9.3615 9.90338 9.3615 8.29344C9.3615 4.81767 12.1907 2 15.6807 2C16.4995 2 17.282 2.15509 18 2.43738"
+                      stroke="#1C274C"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M17.8851 8.29353C17.8851 9.50601 16.8982 10.4889 15.6807 10.4889C14.4633 10.4889 13.4763 9.50601 13.4763 8.29353C13.4763 7.08105 14.4633 6.09814 15.6807 6.09814C16.8982 6.09814 17.8851 7.08105 17.8851 8.29353Z"
+                      stroke="#1C274C"
+                      stroke-width="1.5"
+                    ></path>
+                  </g>
+                </svg>
+                <input
+                  class="w-[90%] h-10 pl-10 rounded-2xl ring-1 hover:ring-2 bg-[#1d232a]"
+                  placeholder="Insert your API key"
+                />
+                <button
+                  class="w-[90%] h-10 rounded-2xl ring-1 hover:ring-2 bg-[#11161b]"
+                >
+                  Save API Key In Browser
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
