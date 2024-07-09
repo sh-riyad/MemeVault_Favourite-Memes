@@ -1,3 +1,184 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    :root {
+        --color-body-bg : #1d232a;
+        --color-section-bg: #15191e;
+        --colot-button-bg: #15191e;
+        --color-button-hover: #1d232a;
+        --color-primary-text: #ffffff;
+        --color-secondary-text: #94a3b8;
+
+    }
+}
+
+.theme-default {
+    --color-body-bg : #1d232a;
+    --color-section-bg: #15191e;
+    --colot-button-bg: #15191e;
+    --color-button-hover: #1d232a;
+    --color-primary-text: #ffffff ;
+    --color-secondary-text: #94a3b8;
+
+}
+/* Light Theme */
+.theme-light {
+    --color-body-bg : #ffffff;
+    --color-section-bg: #f9fafb;
+    --color-button-bg: #f1f5f9;
+    --color-button-hover: #e2e8f0;
+    --color-primary-text: #1f2937;
+    --color-secondary-text: #4b5563;
+}
+
+/* Dark Theme */
+.theme-dark {
+    --color-body-bg : #1d232a;
+    --color-section-bg: #15191e;
+    --color-button-bg: #15191e;
+    --color-button-hover: #1d232a;
+    --color-primary-text: #ffffff;
+    --color-secondary-text: #94a3b8;
+}
+
+/* Cupcake Theme */
+.theme-cupcake {
+    --color-body-bg : #fff1f2;
+    --color-section-bg: #ffe4e6;
+    --color-button-bg: #fbcfe8;
+    --color-button-hover: #f9a8d4;
+    --color-primary-text: #9d174d;
+    --color-secondary-text: #be185d;
+}
+
+/* Bumblebee Theme */
+.theme-bumblebee {
+    --color-body-bg : #fffbea;
+    --color-section-bg: #fef3c7;
+    --color-button-bg: #fde68a;
+    --color-button-hover: #fcd34d;
+    --color-primary-text: #92400e;
+    --color-secondary-text: #b45309;
+}
+
+/* Emerald Theme */
+.theme-emerald {
+    --color-body-bg : #ecfdf5;
+    --color-section-bg: #d1fae5;
+    --color-button-bg: #a7f3d0;
+    --color-button-hover: #6ee7b7;
+    --color-primary-text: #065f46;
+    --color-secondary-text: #047857;
+}
+
+/* Corporate Theme */
+.theme-corporate {
+    --color-body-bg : #f3f4f6;
+    --color-section-bg: #e5e7eb;
+    --color-button-bg: #d1d5db;
+    --color-button-hover: #9ca3af;
+    --color-primary-text: #111827;
+    --color-secondary-text: #374151;
+}
+
+/* Synthwave Theme */
+.theme-synthwave {
+    --color-body-bg : #2d1b69;
+    --color-section-bg: #3e1f7c;
+    --color-button-bg: #6e44ff;
+    --color-button-hover: #a855f7;
+    --color-primary-text: #ff0a54;
+    --color-secondary-text: #ff477e;
+}
+
+/* Retro Theme */
+.theme-retro {
+    --color-body-bg : #faf4e1;
+    --color-section-bg: #fae3d9;
+    --color-button-bg: #f5d0c1;
+    --color-button-hover: #ec8f6b;
+    --color-primary-text: #9c6644;
+    --color-secondary-text: #7b341e;
+}
+
+/* Cyberpunk Theme */
+.theme-cyberpunk {
+    --color-body-bg : #0f172a;
+    --color-section-bg: #1e293b;
+    --color-button-bg: #3b82f6;
+    --color-button-hover: #60a5fa;
+    --color-primary-text: #f59e0b;
+    --color-secondary-text: #ef4444;
+}
+
+/* Valentine Theme */
+.theme-valentine {
+    --color-body-bg : #fff0f6;
+    --color-section-bg: #ffe4e6;
+    --color-button-bg: #ffafcc;
+    --color-button-hover: #ff87ab;
+    --color-primary-text: #e11d48;
+    --color-secondary-text: #be185d;
+}
+
+/* Halloween Theme */
+.theme-halloween {
+    --color-body-bg : #1c1917;
+    --color-section-bg: #292524;
+    --color-button-bg: #f97316;
+    --color-button-hover: #ea580c;
+    --color-primary-text: #fbbf24;
+    --color-secondary-text: #f59e0b;
+}
+
+/* Garden Theme */
+.theme-garden {
+    --color-body-bg : #f0fdf4;
+    --color-section-bg: #dcfce7;
+    --color-button-bg: #86efac;
+    --color-button-hover: #4ade80;
+    --color-primary-text: #166534;
+    --color-secondary-text: #14532d;
+}
+
+/* Forest Theme */
+.theme-forest {
+    --color-body-bg : #d1fae5;
+    --color-section-bg: #a7f3d0;
+    --color-button-bg: #6ee7b7;
+    --color-button-hover: #34d399;
+    --color-primary-text: #065f46;
+    --color-secondary-text: #064e3b;
+}
+
+/* Aqua Theme */
+.theme-aqua {
+    --color-body-bg : #ecfeff;
+    --color-section-bg: #cffafe;
+    --color-button-bg: #a5f3fc;
+    --color-button-hover: #67e8f9;
+    --color-primary-text: #0891b2;
+    --color-secondary-text: #0e7490;
+}
+
+/* Lofi Theme */
+.theme-lofi {
+    --color-body-bg : #ffffff;
+    --color-section-bg: #e5e7eb;
+    --color-button-bg: #d1d5db;
+    --color-button-hover: #9ca3af;
+    --color-primary-text: #111827;
+    --color-secondary-text: #4b5563;
+}
+
+/* Pastel Theme */
+.theme-pastel {
+    --color-body-bg : #fdf4ff;
+    --color-section-bg: #fae8ff;
+    --color-button-bg: #f5d0fe;
+    --color-button-hover: #f0abfc;
+    --color-primary-text: #86198f;
+    --color-secondary-text: #701a75;
+}

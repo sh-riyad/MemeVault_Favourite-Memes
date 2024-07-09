@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MemeVault</title>
   </head>
-  <body>
-    <section class="h-screen flex flex-col relative bg-[#1d232a] text-white">
+  <body id="container">
+    <section
+      class="h-screen flex flex-col relative bg-customColor-body text-customColor-primary"
+    >
       <!-- Alert message -->
       <div
         class="w-1/2 h-10 absolute justify-center bg-red-500 z-20 left-1/2 top-12 transform -translate-x-1/2 rounded-xl ring-1 hidden"
@@ -16,7 +18,9 @@
       </div>
       <!-- Alert message end -->
 
-      <nav class="w-full h-16 flex flex-row px-5 shadow-md bg-[#15191e]">
+      <nav
+        class="w-full h-16 flex flex-row px-5 shadow-md bg-customColor-section"
+      >
         <!-- Logo Div -->
         <div class="w-4/12 h-full flex flex-row items-center gap-3">
           <svg
@@ -89,7 +93,7 @@
             </div>
 
             <input
-              class="w-full h-full pl-8 py-1 ml-4 rounded-md mb-1 ring-1 bg-[#15191e]"
+              class="w-full h-full pl-8 py-1 ml-4 rounded-md mb-1 ring-1 bg-customColor-section"
               id="search"
               placeholder="Search Memes"
             />
@@ -108,7 +112,7 @@
         >
           <!-- theme -->
           <button
-            class="flex flex-row px-3 py-2 rounded-xl ring-1 bg-[#15191e] hover:bg-blue-500"
+            class="flex flex-row px-3 py-2 rounded-xl ring-1 bg-customColor-button hover:bg-customColor-button-hover"
             id="themeOptionsButton"
           >
             <svg
@@ -174,31 +178,31 @@
       </nav>
 
       <div
-        class="w-56 h-[49%] absolute z-10 hidden right-2 md:right-10 top-16 rounded-lg p-4 overflow-auto shadow-sm ring-1 bg-[#15191e]"
+        class="w-56 h-[49%] absolute z-10 hidden right-2 md:right-10 top-16 rounded-lg p-4 overflow-auto shadow-sm ring-1 bg-customColor-section"
         id="themeOptionsDiv"
       >
         <!-- Theme List goes Here -->
       </div>
 
-      <section class="w-full m-5 h-full flex flex-grow gap-4">
+      <section class="w-full p-3 h-full flex flex-grow gap-4">
         <!-- dropdown slide -->
         <div
           id="dropdownBar"
-          class="h-[85%] md:h-full w-1/2 hidden z-10 md:block md:float-start md:w-1/4 md:mr-0 ring-1 md:ring-0 rounded-md shadow-md bg-[#15191e]"
+          class="h-[85%] md:h-full w-1/2 hidden z-10 md:block md:float-start md:w-1/4 md:mr-0 ring-1 md:ring-0 rounded-md shadow-md bg-customColor-section"
         >
           <ul class="px-3 py-4 text-xl flex flex-col gap-1">
             <li
-              class="px-4 py-1 hover:bg-[#1d232a] hover:rounded-md hover:ring-1"
+              class="px-4 py-1 hover:bg-customColor-button-hover hover:rounded-md hover:ring-1"
             >
               Drank mene
             </li>
             <li
-              class="px-4 py-1 hover:bg-[#1d232a] hover:rounded-md hover:ring-1"
+              class="px-4 py-1 hover:bg-customColor-button-hover hover:rounded-md hover:ring-1"
             >
               Cat memes
             </li>
             <li
-              class="px-4 py-1 hover:bg-[#1d232a] hover:rounded-md hover:ring-1"
+              class="px-4 py-1 hover:bg-customColor-button-hover hover:rounded-md hover:ring-1"
             >
               Funny memes
             </li>
@@ -207,13 +211,13 @@
 
         <div
           id="mainContent"
-          class="h-full w-full md:flex-grow float-end flex items-center justify-center relative rounded-md shadow-md bg-[#15191e]"
+          class="h-full w-full md:flex-grow float-end flex items-center justify-center relative rounded-md shadow-md bg-customColor-section"
         >
           <div class="flex flex-col w-2/4 items-center justify-center gap-5">
             <strong>You need an API keyto get the memes feed.</strong>
             <button
               id="setApiKeyButton"
-              class="py-3 px-5 rounded-full ring-1 bg-[#15191e]"
+              class="py-3 px-5 rounded-full ring-1 bg-customColor-button"
             >
               Set API Key
             </button>
@@ -225,13 +229,13 @@
             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden"
           >
             <div
-              class="sm:w-[35rem] sm:h-[18rem] flex flex-col bg-[#1d232a] rounded-2xl ring-1 shadow-lg p-5"
+              class="sm:w-[35rem] sm:h-[18rem] flex flex-col rounded-2xl ring-1 shadow-lg p-5 bg-customColor-section"
             >
               <div class="flex flex-row justify-between">
                 <strong class="text-2xl mb-6">Provide API Key</strong>
                 <button
                   id="modalCross"
-                  class="w-7 h-7 flex justify-center items-center rounded-full hover:bg-[#15191e] hover:ring-1"
+                  class="w-7 h-7 flex justify-center items-center rounded-full hover:bg-customColor-button-hover hover:ring-1"
                 >
                   <svg
                     class="w-3 h-3"
@@ -258,7 +262,7 @@
                 </button>
               </div>
 
-              <p class="w-[90%] text-sm mb-4 text-slate-400">
+              <p class="w-[90%] text-sm mb-4 text-customColor-secondary">
                 Press set your own API key below (that needs to be set only once
                 in your browser). Find your own key here:
                 <a>https://humoraapi.com/profile/</a>
@@ -295,11 +299,11 @@
                   </g>
                 </svg>
                 <input
-                  class="w-[90%] h-10 pl-10 rounded-2xl ring-1 hover:ring-2 bg-[#1d232a]"
+                  class="w-[90%] h-10 pl-10 rounded-2xl ring-1 hover:ring-2 bg-customColor-section"
                   placeholder="Insert your API key"
                 />
                 <button
-                  class="w-[90%] h-10 rounded-2xl ring-1 hover:ring-2 bg-[#11161b]"
+                  class="w-[90%] h-10 rounded-2xl ring-1 hover:ring-2 bg-customColor-button"
                 >
                   Save API Key In Browser
                 </button>
