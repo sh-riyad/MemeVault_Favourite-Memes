@@ -14,18 +14,71 @@ const modalCross = document.querySelector("#modalCross");
 const setApiKeyButton = document.querySelector("#setApiKeyButton");
 const searchInput = document.querySelector("#search"); 
 const container = document.querySelector("#container");
+const apiInput = document.querySelector("#apiInput");
+const submitApiButton = document.querySelector("#submitApiButton");
 
-const apiKey = localStorage.getItem("api_key") || "none";
+let apiKey = localStorage.getItem("api_key") || "none";
+
+function getTheme() {
+  return localStorage.getItem("theme") || "default";
+}
 
 
-
-
-function randerUrl() {
+function randerUrlDemo(){
   const parsedUrl = new URL(window.location.href);
-  const paramTheme = parsedUrl.searchParams.get("theme");
-  if (paramTheme) {
-    localStorage.setItem("theme", paramTheme);
+  let parseDemo = parsedUrl.searchParams.get("demo");
+  if (!parseDemo) {
+    parseDemo = localStorage.getItem("demo") ?? "true";
+    parsedUrl.searchParams.append("demo", parseDemo);
+    window.history.replaceState({}, '', parsedUrl);
   }
+  localStorage.setItem("demo", parseDemo);
+  if(apiKey != "none")
+    randerData(parseDemo);
+}
+
+async function randerData(parseDemo) {
+  let url = "";
+  if (parseDemo == "true")
+    url = "mock\data\search.json";
+  else
+    url = "https://api.humorapi.com/memes/search?number=20&keywords=rocket";
+
+  const myHeaders = new Headers();
+  myHeaders.append("x-api-key", apiKey);
+    
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+    
+
+  const res = await fetch(url, requestOptions);
+  const data = await res;
+  console.log(data);
+}
+
+
+
+
+function randerUrlTheme(newTheme) {
+  const parsedUrl = new URL(window.location.href);
+  if (!newTheme) {
+    const paramTheme = parsedUrl.searchParams.get("theme");
+    if (paramTheme) {
+      localStorage.setItem("theme", paramTheme);
+    }
+    else {
+      const theme = getTheme()
+      parsedUrl.searchParams.append("theme", theme);
+      window.history.replaceState({}, '', parsedUrl);
+    }
+  } else {
+    parsedUrl.searchParams.set("theme", newTheme);
+    window.history.replaceState({}, '', parsedUrl);
+  }
+
 
   randerTheme();
   
@@ -49,7 +102,7 @@ function randerUrl() {
 // }
 
 function randerTheme() {
-  const currentTheme = localStorage.getItem("theme") || "default";
+  const currentTheme = getTheme();
   container.className = "";
   container.classList.add(`theme-${currentTheme.toLowerCase()}`)
   themeButtonText.textContent = formatButtonText(currentTheme);
@@ -93,8 +146,8 @@ searchInput.addEventListener("input", (event) => {
   } else if (input.length < 3) {
     inputError.classList.remove("hidden");
   } else {
+    inputError.classList.add("hidden");
     if (apiKey === "none") {
-      inputError.classList.add("hidden");
       showmodal();
     }
   }
@@ -120,7 +173,7 @@ function renderThemeList() {
     selectedTheme.addEventListener("click", () => {
       themeButtonText.textContent = formatButtonText(theme);
       localStorage.setItem("theme", theme);
-      randerTheme()
+      randerUrl(theme)
       themeOptionsDiv.classList.add("hidden");
       
    })
@@ -132,7 +185,11 @@ function renderThemeList() {
   }) 
 }
 
-
+submitApiButton.addEventListener("click", () => {
+  const apikey = apiInput.value; 
+  localStorage.setItem("api_key", apikey);
+  hidemodal();
+})
 
 dropdown.addEventListener("click", () => {
   if (dropdownBar.classList.contains("hidden")){
@@ -159,7 +216,9 @@ themeOptionsButton.addEventListener("click", () => {
 })
 
 window.addEventListener("load", () => {
-  randerUrl();
+  randerUrlTheme();
+  randerUrlDemo();
   randerTheme();
-  renderThemeList()
+  renderThemeList();
+  
 })

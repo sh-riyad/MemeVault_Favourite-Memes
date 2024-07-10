@@ -265,7 +265,9 @@
               <p class="w-[90%] text-sm mb-4 text-customColor-secondary">
                 Press set your own API key below (that needs to be set only once
                 in your browser). Find your own key here:
-                <a>https://humoraapi.com/profile/</a>
+                <a href="https://humorapi.com/console/#Profile"
+                  >https://humorapi.com/console/#Profile</a
+                >
               </p>
               <div
                 class="w-full h-1/2 flex justify-center flex-col items-center relative gap-4"
@@ -299,10 +301,12 @@
                   </g>
                 </svg>
                 <input
+                  id="apiInput"
                   class="w-[90%] h-10 pl-10 rounded-2xl ring-1 hover:ring-2 bg-customColor-section"
                   placeholder="Insert your API key"
                 />
                 <button
+                  id="submitApiButton"
                   class="w-[90%] h-10 rounded-2xl ring-1 hover:ring-2 bg-customColor-button"
                 >
                   Save API Key In Browser
