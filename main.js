@@ -120,6 +120,7 @@ function hideFullImage() {
   memesFeed.classList.remove("blur-sm", "brightness-20");
 }
 function showAddToFavDiv() {
+  hideFullImage();
   addToFavDiv.classList.remove("hidden");
   hideInputNameError();
   hideItemAlreadyExist();
@@ -201,7 +202,6 @@ async function fetchData(query = "programming") {
   } else {
     url = `https://api.humorapi.com/memes/search?number=20&keywords=${query}`;
   }
-
   const myHeaders = new Headers();
   myHeaders.append("x-api-key", getApikey());
     
@@ -279,10 +279,12 @@ async function fetchData(query = "programming") {
     const saveToFev = imgDiv.querySelector("#saveToFev");
 
     saveToLocal.addEventListener("click", () => {
+      hideFullImage();
       downloadImage(item.url);
     })
     saveToFev.addEventListener("click", () => {
-      saveToFavList(item)
+      hideFullImage();
+      saveToFavList(item);
     })
     imgDiv.addEventListener("mouseover", () => {
       saveToLocal.classList.remove("hidden");
@@ -458,6 +460,7 @@ function main() {
       const input = searchInput.value.trim();
       if (input.length >= 3) {
         if (getApikey()) {
+          
           fetchData(input);
         }
       }
