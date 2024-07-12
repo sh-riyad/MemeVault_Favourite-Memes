@@ -448,7 +448,7 @@ function main() {
       inputError.classList.remove("hidden");
     } else {
       inputError.classList.add("hidden");
-      if (getApikey()) {
+      if (!getApikey()) {
         showmodal();
       }
     }
