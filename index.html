@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MemeVault</title>
   </head>
@@ -190,23 +189,17 @@
           id="dropdownBar"
           class="h-[85%] md:h-full w-1/2 hidden z-10 md:block md:float-start md:w-1/4 md:mr-0 ring-1 md:ring-0 rounded-md shadow-md bg-customColor-section"
         >
-          <ul class="px-3 py-4 text-xl flex flex-col gap-1">
-            <li
-              class="px-4 py-1 hover:bg-customColor-button-hover hover:rounded-md hover:ring-1"
-            >
-              Drank mene
-            </li>
-            <li
-              class="px-4 py-1 hover:bg-customColor-button-hover hover:rounded-md hover:ring-1"
-            >
-              Cat memes
-            </li>
-            <li
-              class="px-4 py-1 hover:bg-customColor-button-hover hover:rounded-md hover:ring-1"
-            >
-              Funny memes
-            </li>
-          </ul>
+          <h1
+            class="w-full px-6 pt-3 flex items-center text-xl font-sans font-extrabold text-customColor-primary"
+          >
+            Favourite Memes
+          </h1>
+          <div
+            id="FavMemeList"
+            class="w-full px-3 py-4 text-xl flex flex-grow flex-col gap-1"
+          >
+            <!-- Favourite Memes List goes here -->
+          </div>
         </div>
 
         <div
@@ -214,9 +207,12 @@
           class="h-full w-full md:flex-grow float-end rounded-md shadow-md bg-customColor-section"
         >
           <!-- Memes feed -->
-          <div class="h-full w-full flex flex-col px-6 py-3 gap-4">
+          <div
+            id="memesFeedContainer"
+            class="h-full w-full flex flex-col px-6 py-3 gap-4 relative hidden"
+          >
             <h1
-              class="w-full h-[8%] flex items-center text-3xl font-sans font-extrabold text-customColor-primary"
+              class="w-full h-[8%] pl-2 flex items-center text-3xl font-sans font-extrabold text-customColor-primary"
             >
               Memes Feed
             </h1>
@@ -224,79 +220,52 @@
               id="memesFeed"
               class="xl:columns-3 md:columns-3 sm:columns-2 justify-center items-center gap-0 overflow-y-scroll"
             >
-              <div class="relative hover:scale-105">
-                <button
-                  class="absolute w-10 h-10 right-4 top-3 rounded-full flex items-center justify-center bg-customColor-body hover:scale-105"
-                >
-                  <svg
-                    class="w-8 h-8"
-                    viewBox="0 0 24 24"
-                    fill="000000"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
-                        stroke="#464455"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </g>
-                  </svg>
-                </button>
-                <button
-                  class="absolute w-10 h-10 right-16 top-3 rounded-full flex items-center justify-center bg-customColor-body hover:scale-105"
-                >
-                  <svg
-                    class="w-8 h-8"
-                    viewBox="0 0 24 24"
-                    fill="000000"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M6.75 6L7.5 5.25H16.5L17.25 6V19.3162L12 16.2051L6.75 19.3162V6ZM8.25 6.75V16.6838L12 14.4615L15.75 16.6838V6.75H8.25Z"
-                        fill="#080341"
-                      ></path>
-                    </g>
-                  </svg>
-                </button>
-                <img
-                  class="p-2"
-                  src="https://i.imgur.com/q3cZlpv.png"
-                  alt=""
-                />`
-              </div>
               <!-- Memes feed goes here -->
 
               <!-- <img class="w-20 h-20" src="https://i.imgur.com/8JTc5z3.jpg" /> -->
               <!-- <img src="https://i.imgur.com/8JTc5z3.jpg" />
               <img src="https://i.imgur.com/8JTc5z3.jpg" /> -->
             </div>
+            <!-- Show Image Full Screen -->
+            <div
+              id="showImage"
+              class="columns-1 z-30 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden shadow-md"
+            ></div>
+
+            <!-- Custom Name for Favourite memes -->
+            <div
+              id="addToFavDiv"
+              class="w-[40%] h-36 z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-customColor-body ring-1 rounded-xl py-4 px-6 flex justify-between flex-col hidden"
+            >
+              <h1 class="text-lg">Add To Favourite List</h1>
+              <input
+                id="saveFavNameInput"
+                class="w-full h-8 px-3 py-2 rounded-md ring-1 bg-customColor-body"
+                type="text"
+                placeholder="Enter Name"
+              />
+              <p id="NameError" class="text-red-500 text-sm hidden">
+                Please Insert a valis name
+              </p>
+              <p id="itemAlreadyExist" class="text-red-500 text-sm hidden">
+                The item already exists
+              </p>
+
+              <button
+                id="saveFevButton"
+                class="w-20 h-8 self-end rounded-lg bg-customColor-button ring-1 hover:ring-2"
+              >
+                Save
+              </button>
+            </div>
           </div>
 
           <!-- API key input button -->
           <div
-            class="h-full w-full flex items-center justify-center relative hidden"
+            id="apiKeyInputDiv"
+            class="h-full w-full flex items-center justify-center relative"
           >
-            <div
-              id="apiKeyInputDiv"
-              class="flex flex-col w-2/4 items-center justify-center gap-5"
-            >
+            <div class="flex flex-col w-2/4 items-center justify-center gap-5">
               <strong>You need an API keyto get the memes feed.</strong>
               <button
                 id="setApiKeyButton"
